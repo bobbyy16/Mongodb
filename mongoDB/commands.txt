@@ -1,0 +1,71 @@
+Mongosh
+
+1. show dbs -> to show databases
+2. db.dropDatabase() -> to delete databases
+3. show collections -> to show collections
+4. use <databaseName> -> to create database
+5. db.users.insertOne(
+    {
+        name: "John"
+    }
+) -> to insert data also create collection
+6. db.users.find() -> to find data in that collection
+7. db.users.insertOne(
+    {
+        name: "bobby",
+        age: 22,
+        address: {
+            street: "4th cross"
+        },
+        hobbies: [
+            "Running",
+            "Sleeping"
+        ]
+    }
+) -> Another way to add data to the collection
+
+8. db.users.insertMany([{},{},{}]) -> to insert many data
+9. db.users.find().limit(2) -> only limit to data
+10. db.users.find().sort(
+    {
+        name: -1 -> sort in descending order
+    }
+) or .sort({
+    name: 1 -> sort in ascending order
+}) 
+
+11. db.users.find(
+    {
+        name: "bob" -> Find everyone with the name bob
+    }
+)
+
+12. $eq -> equal to
+13. $ne -> not equal
+14. db.users.find({age: {$gt: 18}}) -> $gt -> greater than
+15. $gte -> greater than equal to
+16. $lt / $lte -> lesser than or equal to
+17. $in -> if the value in the list 
+18. $exists -> If the value exists in the object (boolean)
+19. db.users.findOne({age: {$lte: 40}}) -> FInd only one data
+20. db.users.countDocuments({age: {$lte: 40}}) -> to count how many docs are there
+
+update
+
+21. db.users.updateOne({age: 26}, {$st: {age: 27}}) -> to update data
+22. $push -> to push data
+23. $pull to remove data
+24. db.users.updateMany(
+    {
+        address: {$exists: true}
+    },
+    {
+        $unset: {address: ""}
+    }
+) to update many
+
+
+delete
+
+db.users.deleteOne
+db.users.deleteMany
